@@ -1,0 +1,73 @@
+%YAML:1.0
+
+# Tell ORB-SLAM3 it's a mono camera
+Camera.Sensor: MONOCULAR
+
+#--------------------------------------------------------------------------------------------
+# Camera Parameters - CORRECTED from actual TurtleBot3 camera_info
+#--------------------------------------------------------------------------------------------
+Camera.type: "PinHole"
+
+# Camera calibration and distortion parameters (from rostopic echo /camera/rgb/camera_info)
+Camera.fx: 1206.8897719532354
+Camera.fy: 1206.8897719532354
+Camera.cx: 960.5
+Camera.cy: 540.5
+
+# Distortion parameters (all zero for TurtleBot3 sim camera)
+Camera.k1: 0.0
+Camera.k2: 0.0
+Camera.p1: 0.0
+Camera.p2: 0.0
+Camera.k3: 0.0
+
+# Actual camera resolution
+Camera.width: 640
+Camera.height: 480
+
+# Camera frames per second 
+Camera.fps: 30.0
+
+# Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
+Camera.RGB: 1
+
+#--------------------------------------------------------------------------------------------
+# ORB Parameters - Optimized for 1920x1080 resolution
+#--------------------------------------------------------------------------------------------
+
+# ORB Extractor: Number of features per image (increased for higher resolution)
+ORBextractor.nFeatures: 1000
+
+# ORB Extractor: Scale factor between levels in the scale pyramid 	
+ORBextractor.scaleFactor: 1.2
+
+# ORB Extractor: Number of levels in the scale pyramid (increased for higher res)
+ORBextractor.nLevels: 8
+
+# ORB Extractor: Fast threshold
+# Lower thresholds for better feature detection in simulation
+ORBextractor.iniThFAST: 20
+ORBextractor.minThFAST: 7
+
+#--------------------------------------------------------------------------------------------
+# Viewer Parameters - Adjusted for better visualization
+#--------------------------------------------------------------------------------------------
+Viewer.KeyFrameSize: 0.1
+Viewer.KeyFrameLineWidth: 2
+Viewer.GraphLineWidth: 1.5
+Viewer.PointSize: 3
+Viewer.CameraSize: 0.15
+Viewer.CameraLineWidth: 4
+Viewer.ViewpointX: 0.0
+Viewer.ViewpointY: -0.7
+Viewer.ViewpointZ: -1.8
+Viewer.ViewpointF: 500.0
+
+#--------------------------------------------------------------------------------------------
+# System Parameters
+#--------------------------------------------------------------------------------------------
+# Max frames to process (0 = unlimited)
+System.MaxFrames: 0
+
+# Thresholds for relocalization
+System.ThRefRatio: 0.75

@@ -1,0 +1,22 @@
+<launch>
+    <arg name="show_comparison" default="false"/>
+    
+    <!-- Reliable Zero-DCE Enhancement Node (processes every frame) -->
+    <node name="zero_dce_node" pkg="zero_dce_ros" type="zerodce_high_node.py" output="screen">
+        <!-- Reliability-focused parameters -->
+        <param name="enable_enhancement" value="true"/>
+        <param name="enhancement_strength" value="1.0"/>
+        <param name="max_fps" value="60.0"/>  <!-- For monitoring only -->
+        <param name="batch_size" value="1"/>
+        <param name="use_tensorrt" value="false"/>
+        
+        <!-- Topic remapping -->
+        <remap from="/camera/image_raw" to="/camera/rgb/image_raw"/>
+        <remap from="/camera/image_enhanced" to="/camera/rgb/image_enhanced"/>
+    </node>
+    
+    <!-- Optional: Display comparison images -->
+    <node name="image_view_comparison" pkg="image_view" type="image_view" if="$(arg show_comparison)">
+        <remap from="image" to="/zero_dce/comparison"/>
+    </node>
+</launch>

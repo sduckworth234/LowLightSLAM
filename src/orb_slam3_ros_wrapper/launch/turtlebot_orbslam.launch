@@ -1,0 +1,29 @@
+<launch>
+    <!-- ORB-SLAM3 mono node -->
+    <node name="orb_slam3_mono" pkg="orb_slam3_ros_wrapper" type="orb_slam3_ros_wrapper_mono" output="screen">
+        <!-- Remap camera topic to TurtleBot3 camera -->
+        <remap from="/camera/image_raw" to="/camera/rgb/image_raw"/>
+
+        <!-- Parameters for ORB-SLAM3 -->
+        <param name="voc_file"      type="string"   value="$(find orb_slam3_ros_wrapper)/config/ORBvoc.txt" />
+        <param name="settings_file" type="string"   value="$(find orb_slam3_ros_wrapper)/config/settings_turtlebot.yaml" />
+
+        <!-- Parameters for ROS -->
+        <param name="world_frame_id"    type="string"   value="map" />
+        <param name="cam_frame_id"      type="string"   value="camera_rgb_optical_frame" />
+        <param name="enable_pangolin"   type="bool"     value="true" />
+        
+        <!-- World frame orientation (adjust as needed) -->
+        <param name="world_roll"        type="double"   value="0.0" />
+        <param name="world_pitch"       type="double"   value="0.0" />
+        <param name="world_yaw"         type="double"   value="0.0" />
+    </node>
+
+    <!-- Trajectory visualization -->
+    <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="trajectory_server_orb_slam3" output="screen" ns="orb_slam3_ros" >
+        <param name="/target_frame_name" value="/map" />
+        <param name="/source_frame_name" value="/camera_rgb_optical_frame" />
+        <param name="trajectory_update_rate" value="20.0" />
+        <param name="trajectory_publish_rate" value="20.0" />
+    </node>
+</launch>

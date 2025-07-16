@@ -1,0 +1,24 @@
+<launch>
+    <!-- Define arguments with default values -->
+    <arg name="show_comparison" default="false"/>
+    
+    <!-- Zero-DCE Enhancement Node -->
+    <node name="zero_dce_node" pkg="zero_dce_ros" type="zerodce_node.py" output="screen">
+        <!-- Parameters -->
+        <param name="enable_enhancement" value="true"/>
+        <param name="enhancement_strength" value="1.0"/>
+        <param name="max_fps" value="60.0"/>  <!-- Increase to 60 FPS -->
+        <param name="batch_size" value="1"/>   <!-- Can increase if GPU has memory -->
+        <param name="use_tensorrt" value="false"/>  <!-- Optional TensorRT optimization -->
+        
+        
+        <!-- Topic remapping -->
+        <remap from="/camera/image_raw" to="/camera/rgb/image_raw"/>
+        <remap from="/camera/image_enhanced" to="/camera/rgb/image_enhanced"/>
+    </node>
+    
+    <!-- Optional: Display comparison images -->
+    <node name="image_view_comparison" pkg="image_view" type="image_view" if="$(arg show_comparison)">
+        <remap from="image" to="/zero_dce/comparison"/>
+    </node>
+</launch>

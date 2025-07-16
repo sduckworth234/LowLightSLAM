@@ -1,0 +1,80 @@
+# ROS Workspace
+build/
+devel/
+install/
+logs/
+.catkin_workspace
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+dist/
+build/
+
+# C++
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.out
+*.app
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+
+# Bag files (uncomment if you don't want to track bag files)
+# *.bag
+
+# Model files and datasets
+*.pth
+*.pt
+*.ckpt
+*.weights
+*.caffemodel
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Results and outputs
+results/
+output/
+*.txt
+*.csv
+*.json
+*.npy
+
+# Configuration backups
+*.bak
+*.backup

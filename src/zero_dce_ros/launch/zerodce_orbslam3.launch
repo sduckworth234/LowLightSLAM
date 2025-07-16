@@ -1,0 +1,19 @@
+<launch>
+    <!-- Arguments -->
+    <arg name="show_comparison" default="false"/>
+    <arg name="use_gazebo" default="true"/>
+    
+    <!-- Start Gazebo simulation -->
+    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch" if="$(arg use_gazebo)"/>
+    
+    <!-- Zero-DCE Enhancement -->
+    <include file="$(find zero_dce_ros)/launch/zero_dce_enhancement.launch">
+        <arg name="show_comparison" value="$(arg show_comparison)"/>
+    </include>
+    
+    <!-- ORB-SLAM3 (subscribing to enhanced images) -->
+    <include file="$(find orb_slam3_ros_wrapper)/launch/turtlebot_orbslam.launch">
+        <!-- Make ORB-SLAM3 subscribe to enhanced images instead of raw -->
+        <arg name="image_topic" value="/camera/image_enhanced"/>
+    </include>
+</launch>

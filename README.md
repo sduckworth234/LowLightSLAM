@@ -45,7 +45,15 @@ cd LowLightSLAM
 
 ### Install Dependencies
 
-#### System Dependencies
+#### ORB_SLAM3 Dependencies (Recommended)
+For the best compatibility with our tested and working ORB_SLAM3 setup:
+
+```bash
+# Install ORB_SLAM3 specific dependencies (OpenCV, Eigen3, Pangolin, RealSense)
+./install_orbslam3_deps.sh
+```
+
+#### System Dependencies  
 ```bash
 # Install ROS dependencies
 sudo apt update
@@ -59,32 +67,22 @@ sudo apt install libeigen3-dev
 
 # Install other dependencies
 sudo apt install libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev
-sudo apt install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev
-```
-
-#### Install Pangolin
-```bash
-cd /tmp
-git clone https://github.com/stevenlovegrove/Pangolin.git
-cd Pangolin
-mkdir build && cd build
-cmake ..
-make -j4
-sudo make install
-```
-
 ### Build ORB-SLAM3
+
+ORB_SLAM3 is included as a tested, working version in this repository.
 
 ```bash
 cd ORB_SLAM3
 chmod +x build.sh
 ./build.sh
-
-# Extract vocabulary file
-cd Vocabulary
-tar -xf ORBvoc.txt.tar.gz
-cd ../..
 ```
+
+The build script will:
+- Build all Thirdparty libraries (DBoW2, g2o, Sophus)  
+- Extract the vocabulary file automatically
+- Build the main ORB_SLAM3 library
+
+**Note**: This ORB_SLAM3 version has been tested and verified working. See `ORB_SLAM3_WORKING_CONFIG.md` for detailed configuration information.
 
 ### Build the ROS Workspace
 

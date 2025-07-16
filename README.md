@@ -79,6 +79,11 @@ sudo make install
 cd ORB_SLAM3
 chmod +x build.sh
 ./build.sh
+
+# Extract vocabulary file
+cd Vocabulary
+tar -xf ORBvoc.txt.tar.gz
+cd ../..
 ```
 
 ### Build the ROS Workspace

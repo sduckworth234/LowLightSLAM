@@ -44,7 +44,7 @@ Makefile
 *.cmake
 
 # Bag files (uncomment if you don't want to track bag files)
-# *.bag
+*.bag
 
 # Model files and datasets
 *.pth

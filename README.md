@@ -39,7 +39,7 @@ LowLightSLAM/
 ### Clone the Repository
 
 ```bash
-git clone --recursive https://github.com/yourusername/LowLightSLAM.git
+git clone --recursive https://github.com/sduckworth234/LowLightSLAM.git
 cd LowLightSLAM
 ```
 
@@ -198,7 +198,7 @@ If you use this work in your research, please cite:
   author={Your Name},
   year={2024},
   publisher={GitHub},
-  howpublished={\url{https://github.com/yourusername/LowLightSLAM}}
+  howpublished={\url{https://github.com/sduckworth234/LowLightSLAM}}
 }
 ```
 
